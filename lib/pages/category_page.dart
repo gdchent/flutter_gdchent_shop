@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../res/listData.dart';
 
 class CategoryPage extends StatefulWidget {
+
   @override
   State createState() {
     return CategoryState();
@@ -9,66 +11,36 @@ class CategoryPage extends StatefulWidget {
 }
 
 class CategoryState extends State<CategoryPage> {
+
+  List tempList=new List();
+
+  /**
+   * for循环添加widget 类似于rn通过map循环遍历添加组件
+   */
+  List<Widget> getData() {
+    var list = listData.map((value) {
+      return ListTile(
+        title: Text(value["author"]),
+      );
+    });
+    tempList=list.toList();
+    return tempList;
+  }
+  @override
+  void initState() {
+      super.initState();
+  }
   @override
   Widget build(BuildContext context) {
-    return new ListView(
-      children: <Widget>[
-        ListTile(
-          leading: Icon(
-            Icons.settings_input_svideo,
-            size: 30.0,
-          ),
-          title: Text(
-            "一级标题",
-            style: TextStyle(
-                fontSize: 23.0,
-                color: Colors.blueGrey,
-                backgroundColor: Colors.deepOrange),
-          ),
-          subtitle: Text("二级标题"),
-        ),
-        ListTile(
-          leading: Image.network(
-              "https://dss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1284651229,4011062394&fm=26&gp=0.jpg",
-              width: 60.5,
-              height: 60.2,
-              fit: BoxFit.fill),
-          title: Text(
-            "一级标题",
-            style: TextStyle(
-                fontSize: 23.0,
-                color: Colors.blueGrey,
-                backgroundColor: Colors.deepOrange),
-          ),
-          subtitle: Text("二级标题"),
-          onTap: (){
-            //print("点击");
-          },
-        ),
-        ListTile(
-          leading: Icon(Icons.settings_input_svideo),
-          title: Text("一级标题"),
-          subtitle: Text("二级标题"),
-        ),
-        ListTile(
-          leading: Icon(Icons.settings_input_svideo),
-          title: Text("一级标题"),
-          subtitle: Text("二级标题"),
-        ),
-        ListTile(
-          leading: Icon(Icons.settings_input_svideo),
-          title: Text("一级标题"),
-          subtitle: Text("二级标题"),
-        ),
-        ListTile(
-          leading: Icon(
-            Icons.settings_input_svideo,
-            size: 30.0,
-          ),
-          title: Text("一级标题"),
-          subtitle: Text("二级标题"),
-        ),
-      ],
-    );
+    return ListView.builder(
+         itemCount:listData.length,
+         itemBuilder: (BuildContext context, int index){
+         return ListTile(
+           title: Text(listData[index]['author']),
+           onTap: (){
+              print(index);
+           },
+         );
+    });
   }
 }
