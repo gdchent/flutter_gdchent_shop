@@ -13,7 +13,6 @@ class CategoryPage extends StatefulWidget {
 class CategoryState extends State<CategoryPage> {
 
   List tempList=new List();
-
   /**
    * for循环添加widget 类似于rn通过map循环遍历添加组件
    */
