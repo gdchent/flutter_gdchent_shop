@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'home_page.dart';
-import 'category_page.dart';
-import 'shopcart_page.dart';
-import 'member_page.dart';
+import 'home/home_page.dart';
+import 'category/category_page.dart';
+import 'shop/shopcart_page.dart';
+import 'member/member_page.dart';
 
+/**
+ * 首页有状态组件
+ */
 class IndexPage extends StatefulWidget {
   @override
   _IndexPageState createState() => _IndexPageState();
@@ -18,6 +21,7 @@ class _IndexPageState extends State<IndexPage> {
     BottomNavigationBarItem( icon: Icon(CupertinoIcons.shopping_cart), title: Text('购物车')),
     BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), title: Text('会员中心')),
   ];
+
 
   final List tabBodies = [
     HomePage(),
